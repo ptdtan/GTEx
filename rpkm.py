@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import numpy
+import gzip
 from collections import namedtuple, defaultdict
 
 rpkmProfile = namedtuple('rpkmProfile', ['sTissue', 'rpkm'])
@@ -40,7 +41,7 @@ class RPKMInstance(object):
         :returns: dict( key=geneID, value:dict(key=sampleID, value=RPKM))
 
         """
-        with open(filepath) as ofile:
+        with gzip.open(filepath, 'rb') as ofile:
             map(ofile.readline(), range(2))
             stissues = ofile.readline().strip().split('\t'[2:])
             records = defaultdict(dict)

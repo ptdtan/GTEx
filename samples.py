@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import gzip
 from collections import defaultdict
 
 class Sample(object):
@@ -14,7 +15,7 @@ class Sample(object):
         return Sample(record[0], record[5], record[6])
 
 def GetSample(filepath):
-    with open(filepath) as ofile:
+    with gzip.open(filepath, 'rb') as ofile:
         ofile.readline()
         return list(map(lambda x:Sample._from_record(x), ofile.readlines()))
 
