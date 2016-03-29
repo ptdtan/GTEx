@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 
-import sys
+from collections import defaultdict
 
 class Sample(object):
-    def __init__(self, id, tissue, name):
+    def __init__(self, id, tissue, stissue):
         self._id = id
         self._tissue = tissue
-        self._name = name
+        self._stissue = stissue
     
     @staticmethod
     def _from_record(line):
@@ -17,6 +17,13 @@ def GetSample(filepath):
     with open(filepath) as ofile:
         ofile.readline()
         return list(map(lambda x:Sample._from_record(x), ofile.readlines()))
-def _samplesDict(samples):
-    return dict(zip(list(map(lambda x:x._id, samples)), samples))
+
+def _IDdict(samples):
+    return dict(zip([sample._id for sample in samples], samples))
+
+def _sTISSUEdict(samples):
+    sTISSUEdict = defaultdict(list)
+    map(lambda x: sTISSUEdict[x._stissue].append(x), samples)
+    return sTISSUEdict
+
 
