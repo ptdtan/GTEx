@@ -31,7 +31,8 @@ class RPKMInstance(object):
         for gene, record in rpkm_records.items():
             rpkm_stissue = defaultdict(list)
             map(lambda x: rpkm_stissue[IDsampleDict[x]._stissue].append(int(record[x])), record.keys())
-            GeneRPKM[gene] = {stissue, numpy.median(numpy.array(rpkms)) for stissue, rpkms in rpkm_stissue.items() } 
+            GeneRPKM[gene] = {stissue: numpy.median(numpy.array(rpkms)) \
+                                    for stissue, rpkms in rpkm_stissue.items() } 
         return GeneRPKM
     
     @staticmethod
