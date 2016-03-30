@@ -2,11 +2,10 @@
 
 import numpy
 import gzip
-import sample as sa
+import samples as sa
 from collections import namedtuple, defaultdict
 from operator import setitem
 
-rpkmProfile = namedtuple('rpkmProfile', ['sTissue', 'rpkm'])
 
 class RPKMInstance(object):
 
@@ -28,12 +27,12 @@ class RPKMInstance(object):
         :returns: list of rpkmProfile
         """
         IDsampleDict = sa._IDdict(samples)
-        for record in rpkm_records:
+        GenesRPKM = defaultdict()
+        for gene, record in rpkm_records.items():
             rpkm_stissue = defaultdict(list)
             map(lambda x: rpkm_stissue[IDsampleDict[x]._stissue].append(int(record[x])), record.keys())
-        profiles = list(map(rpkmProfile._make, [ [stissue, numpy.median(numpy.array(rpkms))] \
-                                                    for stissue, rpkms in rpkm_stissue.items() ]))
-        return profiles
+            GeneRPKM[gene] = {stissue, numpy.median(numpy.array(rpkms)) for stissue, rpkms in rpkm_stissue.items() } 
+        return GeneRPKM
     
     @staticmethod
     def _records_from_file(filepath):
