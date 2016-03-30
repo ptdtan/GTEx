@@ -8,27 +8,26 @@ from multithread import ThreadPool
 from collections import namedtuple, defaultdict
 from operator import setitem
 
-Profile = namedtuple('BoxplotProfile', ['median', '75', '25', 'high', 'low'])
+Profile = namedtuple('BoxplotProfile', ['median', 'q75', 'q25', 'high', 'low'])
 class RPKMInstance(object):
 
     """Docstring for RPKMprofile. 
     instance for computing median rpkm for given genes
     """
 
-    def __init__(self, rpkm_records, samples):
+    def __init__(self, rpkm_records, IDsampleDict):
         self._rpkm_profiles = defaultdict()
-        self._rpkm_computing(samples, rpkm_records)
+        self._rpkm_computing(IDsampleDict, rpkm_records)
 
-    def _rpkm_computing(self, samples, rpkm_records):
-        """compute the dict(tissue, median rpkm) for given rpkm record containing
-        rpkm values for multiple samples
+    def _rpkm_computing(self, IDsampleDict, rpkm_records):
+        """compute the dict(tissue, rpkm_profile) for given rpkm record containing
+        rpkm values for multiple IDsampleDict
 
-        :samples: list of sample objects
+        :IDsampleDict: list of sample objects
         :rpkm_records: raw rpkm data read from file, dict(key=sampleID, value=rpkm)
 
         :returns: add rpk._rpkm_profiles to self._rpkm_profiles
-        """
-        IDsampleDict = sa._IDdict(samples)
+        """        
 
         def __boxplot_computing(data):
             arr = numpy.array(data)
@@ -60,4 +59,4 @@ class RPKMInstance(object):
             records = defaultdict(dict)
             map(lambda x: setitem(records, x[0], dict(zip(stissues, x[2:]))),\
                                     list(map(lambda y: y.strip().split("\t"), ofile.readlines())))
-            return records
+	return records
