@@ -2,7 +2,9 @@
 
 import numpy
 import gzip
+import sample as sa
 from collections import namedtuple, defaultdict
+from operator import setitem
 
 rpkmProfile = namedtuple('rpkmProfile', ['sTissue', 'rpkm'])
 
@@ -12,8 +14,8 @@ class RPKMInstance(object):
     instance for computing median rpkm for given genes
     """
 
-    def __init__(self, rpkm_records):
-        self._profiles = _rpkm_computing(samples, rpkm_records)
+    def __init__(self, rpkm_records, samples):
+        self._profiles = self._rpkm_computing(samples, rpkm_records)
 
     @staticmethod
     def _rpkm_computing(samples, rpkm_records):
@@ -42,10 +44,10 @@ class RPKMInstance(object):
 
         """
         with gzip.open(filepath, 'rb') as ofile:
-            map(ofile.readline(), range(2))
-            stissues = ofile.readline().strip().split('\t'[2:])
+            map(lambda x: ofile.readline(), range(2))
+            stissues = ofile.readline().strip().split('\t')[2:]
             records = defaultdict(dict)
-            map(lambda x: records[x[0]] = dict(zip(stissues, x[2:])),\
+            map(lambda x: setitem(records, x[0], dict(zip(stissues, x[2:]))),\
                                     list(map(lambda y: y.strip().split("\t"), ofile.readlines())))
             return records
 
