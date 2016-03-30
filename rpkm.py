@@ -3,11 +3,12 @@
 import numpy
 import gzip
 import samples as sa
+import matplotlib.pyplot as plt
 from multithread import ThreadPool
 from collections import namedtuple, defaultdict
 from operator import setitem
 
-
+Profile = namedtuple('BoxplotProfile', ['median', '75', '25', 'high', 'low'])
 class RPKMInstance(object):
 
     """Docstring for RPKMprofile. 
@@ -15,7 +16,7 @@ class RPKMInstance(object):
     """
 
     def __init__(self, rpkm_records, samples):
-        self._profiles = defaultdict()
+        self._rpkm_profiles = defaultdict()
         self._rpkm_computing(samples, rpkm_records)
 
     def _rpkm_computing(self, samples, rpkm_records):
@@ -25,15 +26,24 @@ class RPKMInstance(object):
         :samples: list of sample objects
         :rpkm_records: raw rpkm data read from file, dict(key=sampleID, value=rpkm)
 
-        :returns: list of rpkmProfile
+        :returns: add rpk._rpkm_profiles to self._rpkm_profiles
         """
         IDsampleDict = sa._IDdict(samples)
-        def __inferer(gene, record):
-            rpkm_stissue = defaultdict(list)
-            map(lambda x: rpkm_stissue[IDsampleDict[x]._stissue].append(float(record[x])), record.keys())
-            self._profiles[gene] = {stissue: numpy.median(numpy.array(rpkms)) \
-                  for stissue, rpkms in rpkm_stissue.items() }
 
+        def __boxplot_computing(data):
+            arr = numpy.array(data)
+            box = plt.boxplot(arr)
+            return [item.get_ydata()[1] for item in box['whishkers']]
+
+        def __inferer(gene, record):
+            arr_rpkm_stissue = defaultdict(list)
+            map(lambda x: arr_rpkm_stissue[IDsampleDict[x]._stissue].append(float(record[x])),\
+                                                              record.keys())
+            tup_rpkm_stissue = defauldict()
+            map(lambda y: setitem(tup_rpkm_stissue, y, __boxplot_computing(arr_rpkm_stissue[y])), \
+                                                                        arr_rpkm_stissue.keys())
+            self._rpkm_profiles[gene] = {stissue: values for stissue, values in tup_rpkm_stissue.items() }
+        
         map(lambda arg : __inferer(*arg), [[gene, record] for gene, record in rpkm_records.items()])
     
     @staticmethod
@@ -51,7 +61,3 @@ class RPKMInstance(object):
             map(lambda x: setitem(records, x[0], dict(zip(stissues, x[2:]))),\
                                     list(map(lambda y: y.strip().split("\t"), ofile.readlines())))
             return records
-
-            
-
-
