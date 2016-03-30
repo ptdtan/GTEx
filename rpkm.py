@@ -3,6 +3,7 @@
 import numpy
 import gzip
 import samples as sa
+from multithread import ThreadPool
 from collections import namedtuple, defaultdict
 from operator import setitem
 
@@ -14,10 +15,10 @@ class RPKMInstance(object):
     """
 
     def __init__(self, rpkm_records, samples):
-        self._profiles = self._rpkm_computing(samples, rpkm_records)
+        self._profiles = defaultdict()
+        self._rpkm_computing(samples, rpkm_records)
 
-    @staticmethod
-    def _rpkm_computing(samples, rpkm_records):
+    def _rpkm_computing(self, samples, rpkm_records):
         """compute the dict(tissue, median rpkm) for given rpkm record containing
         rpkm values for multiple samples
 
@@ -27,13 +28,13 @@ class RPKMInstance(object):
         :returns: list of rpkmProfile
         """
         IDsampleDict = sa._IDdict(samples)
-        GenesRPKM = defaultdict()
-        for gene, record in rpkm_records.items():
+        def __inferer(gene, record):
             rpkm_stissue = defaultdict(list)
-            map(lambda x: rpkm_stissue[IDsampleDict[x]._stissue].append(int(record[x])), record.keys())
-            GeneRPKM[gene] = {stissue: numpy.median(numpy.array(rpkms)) \
-                                    for stissue, rpkms in rpkm_stissue.items() } 
-        return GeneRPKM
+            map(lambda x: rpkm_stissue[IDsampleDict[x]._stissue].append(float(record[x])), record.keys())
+            self._profiles[gene] = {stissue: numpy.median(numpy.array(rpkms)) \
+                  for stissue, rpkms in rpkm_stissue.items() }
+
+        map(lambda arg : __inferer(*arg), [[gene, record] for gene, record in rpkm_records.items()])
     
     @staticmethod
     def _records_from_file(filepath):
