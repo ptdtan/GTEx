@@ -1,53 +1,53 @@
-Adipose - Subcutaneous 350
-Adipose - Visceral (Omentum) 227
-Adrenal Gland 145
-Artery - Aorta 224
-Artery - Coronary 133
-Artery - Tibial 332
-Bladder 11
-Brain - Amygdala 72
-Brain - Anterior cingulate cortex (BA24) 84
-Brain - Caudate (basal ganglia) 117
-Brain - Cerebellar Hemisphere 105
-Brain - Cerebellum 125
-Brain - Cortex 114
-Brain - Frontal Cortex (BA9) 108
-Brain - Hippocampus 94
-Brain - Hypothalamus 96
-Brain - Nucleus accumbens (basal ganglia) 113
-Brain - Putamen (basal ganglia) 97
-Brain - Spinal cord (cervical c-1) 71
-Brain - Substantia nigra 63
-Breast - Mammary Tissue 214
-Cells - EBV-transformed lymphocytes 118
-Cells - Transformed fibroblasts 284
-Cervix - Ectocervix 6
-Cervix - Endocervix 5
-Colon - Sigmoid 149
-Colon - Transverse 196
-Esophagus - Gastroesophageal Junction 153
-Esophagus - Mucosa 286
-Esophagus - Muscularis 247
-Fallopian Tube 6
-Heart - Atrial Appendage 194
-Heart - Left Ventricle 218
-Kidney - Cortex 32
-Liver 119
-Lung 320
-Minor Salivary Gland 57
-Muscle - Skeletal 430
-Nerve - Tibial 304
-Ovary 97
-Pancreas 171
-Pituitary 103
-Prostate 106
-Skin - Not Sun Exposed (Suprapubic) 250
-Skin - Sun Exposed (Lower leg) 357
-Small Intestine - Terminal Ileum 88
-Spleen 104
-Stomach 193
-Testis 172
-Thyroid 323
-Uterus 83
-Vagina 96
-Whole Blood 393
+Adipose - Subcutaneous 3 352
+Adipose - Visceral (Omentum) 353 579
+Adrenal Gland 580 724
+Artery - Aorta 725 948
+Artery - Coronary 949 1081
+Artery - Tibial 1082 1413
+Bladder 1414 1424
+Brain - Amygdala 1425 1496
+Brain - Anterior cingulate cortex (BA24) 1497 1580
+Brain - Caudate (basal ganglia) 1581 1697
+Brain - Cerebellar Hemisphere 1698 1802
+Brain - Cerebellum 1803 1927
+Brain - Cortex 1928 2041
+Brain - Frontal Cortex (BA9) 2042 2149
+Brain - Hippocampus 2150 2243
+Brain - Hypothalamus 2244 2339
+Brain - Nucleus accumbens (basal ganglia) 2340 2452
+Brain - Putamen (basal ganglia) 2453 2549
+Brain - Spinal cord (cervical c-1) 2550 2620
+Brain - Substantia nigra 2621 2683
+Breast - Mammary Tissue 2684 2897
+Cells - EBV-transformed lymphocytes 2898 3015
+Cells - Transformed fibroblasts 3016 3299
+Cervix - Ectocervix 3300 3305
+Cervix - Endocervix 3306 3310
+Colon - Sigmoid 3311 3459
+Colon - Transverse 3460 3655
+Esophagus - Gastroesophageal Junction 3656 3808
+Esophagus - Mucosa 3809 4094
+Esophagus - Muscularis 4095 4341
+Fallopian Tube 4342 4347
+Heart - Atrial Appendage 4348 4541
+Heart - Left Ventricle 4542 4759
+Kidney - Cortex 4760 4791
+Liver 4792 4910
+Lung 4911 5230
+Minor Salivary Gland 5231 5287
+Muscle - Skeletal 5288 5717
+Nerve - Tibial 5718 6021
+Ovary 6022 6118
+Pancreas 6119 6289
+Pituitary 6290 6392
+Prostate 6393 6498
+Skin - Not Sun Exposed (Suprapubic) 6499 6748
+Skin - Sun Exposed (Lower leg) 6749 7105
+Small Intestine - Terminal Ileum 7106 7193
+Spleen 7194 7297
+Stomach 7298 7490
+Testis 7491 7662
+Thyroid 7663 7985
+Uterus 7986 8068
+Vagina 8069 8164
+Whole Blood 8165 8557
