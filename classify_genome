@@ -14,8 +14,7 @@ else
 fi
 
 #####mapping
-HUMAN_COUNT=`$HISAT2 -p 32 -x $HUMAN_GENOME -U $READS_TRIMMED | awk '{if ($3=="*") print $3}'| wc -l`
-
+HUMAN_COUNT=`$HISAT2 --quiet -p 32 -x $HUMAN_GENOME -U $READS_TRIMMED | awk '{if ($3!="*") print $3}'| wc -l`
 if [[ $HUMAN_COUNT -gt 4800 ]]
 then 
 	echo "human";
