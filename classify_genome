@@ -1,0 +1,24 @@
+#!/bin/bash
+
+HISAT2=$1;
+HUMAN_GENOME=$2;
+READS=$3;
+READS_TRIMMED="${READ%.*}".trimmed.fastq;
+
+#####trimming
+if [[ $READS==*".gz" ]];
+then 
+	zcat $READS | head -n 24000 > $READS_TRIMMED;
+else
+	cat $READS | head -n 24000 > $READS_TRIMMED;
+fi
+
+#####mapping
+HUMAN_COUNT=`$HISAT2 -p 32 -x $HUMAN_GENOME -U $READS_TRIMMED | awk '{if ($3=="*") print $3}'| wc -l`
+
+if [[ $HUMAN_COUNT -gt 4800 ]]
+then 
+	echo "human";
+else
+	echo "mouse";
+fi
