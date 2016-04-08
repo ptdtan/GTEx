@@ -18,4 +18,4 @@ for i in range(len(samples_index)):
     try:
         print samples_index[i][0], samples_index[i][1], samples_index[i+1][1]-1
     except IndexError:
-        print samples_index[i][0], samples_index[i][1], len(arr_tissues)+1+BUFFER
+        print samples_index[i][0], samples_index[i][1], len(arr_tissues)+BUFFER
