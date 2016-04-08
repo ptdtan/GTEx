@@ -2,7 +2,7 @@
 import sys
 import samples as sa
 
-BUFFER = sys.argv[3]
+BUFFER = str(sys.argv[3])
 samples = sa.GetSample(sys.argv[1])
 transcript_samples = open(sys.argv[2]).read().strip().split("\t")[BUFFER:]
 
@@ -18,3 +18,4 @@ for i, s in enumerate(arr_tissues):
     else:
         print "\t".join([s, str(tmp_idx), str(BUFFER+1+i)])
         tmp_idx = i+2
+        tmp = s
