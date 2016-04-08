@@ -16,6 +16,8 @@ for i, s in enumerate(arr_tissues):
         tmp = s
 for i in range(len(samples_index)):
     try:
-        print samples_index[i][0], samples_index[i][1], samples_index[i+1][1]-1
+        print "\t".join(list(map(lambda x: str(x), [samples_index[i][0], samples_index[i][1],
+                                                    samples_index[i+1][1]-1])))
     except IndexError:
-        print samples_index[i][0], samples_index[i][1], len(arr_tissues)+BUFFER
+        print "\t".join(list(map(lambda x: str(x),[samples_index[i][0], samples_index[i][1],
+                                                   len(arr_tissues)+BUFFER])))
