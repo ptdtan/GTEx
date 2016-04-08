@@ -15,4 +15,4 @@ for i, s in enumerate(arr_tissues):
         samples_index.append((s, i+1+BUFFER))
         tmp = s
 for i in range(len(samples_index)):
-    print samples_index[i][0], samples_index[i][1], samples_index[i+1].[1]-1
+    print samples_index[i][0], samples_index[i][1], samples_index[i+1][1]-1
