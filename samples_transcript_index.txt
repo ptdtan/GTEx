@@ -1,0 +1,57 @@
+Adipose - Subcutaneous	5	354
+Adipose - Visceral (Omentum)	355	581
+Brain - Cerebellar Hemisphere	582	686
+Brain - Cerebellum	687	701
+Brain - Cortex	702	702
+Brain - Cerebellum	703	811
+Brain - Cortex	812	827
+Brain - Cerebellum	828	828
+Brain - Cortex	829	925
+Brain - Frontal Cortex (BA9)	926	1033
+Brain - Hippocampus	1034	1127
+Brain - Hypothalamus	1128	1223
+Brain - Nucleus accumbens (basal ganglia)	1224	1336
+Brain - Putamen (basal ganglia)	1337	1433
+Brain - Spinal cord (cervical c-1)	1434	1504
+Brain - Substantia nigra	1505	1567
+Adrenal Gland	1568	1712
+Breast - Mammary Tissue	1713	1926
+Cells - EBV-transformed lymphocytes	1927	2044
+Cells - Transformed fibroblasts	2045	2328
+Cervix - Ectocervix	2329	2334
+Cervix - Endocervix	2335	2339
+Colon - Sigmoid	2340	2488
+Colon - Transverse	2489	2684
+Esophagus - Gastroesophageal Junction	2685	2837
+Esophagus - Mucosa	2838	3123
+Esophagus - Muscularis	3124	3370
+Artery - Aorta	3371	3594
+Fallopian Tube	3595	3600
+Heart - Atrial Appendage	3601	3794
+Heart - Left Ventricle	3795	4012
+Kidney - Cortex	4013	4044
+Liver	4045	4163
+Lung	4164	4483
+Minor Salivary Gland	4484	4540
+Muscle - Skeletal	4541	4970
+Nerve - Tibial	4971	5274
+Ovary	5275	5371
+Artery - Coronary	5372	5504
+Pancreas	5505	5675
+Pituitary	5676	5778
+Prostate	5779	5884
+Skin - Not Sun Exposed (Suprapubic)	5885	6134
+Skin - Sun Exposed (Lower leg)	6135	6491
+Small Intestine - Terminal Ileum	6492	6579
+Spleen	6580	6683
+Stomach	6684	6876
+Testis	6877	7048
+Thyroid	7049	7371
+Artery - Tibial	7372	7703
+Uterus	7704	7786
+Vagina	7787	7882
+Whole Blood	7883	8275
+Bladder	8276	8286
+Brain - Amygdala	8287	8358
+Brain - Anterior cingulate cortex (BA24)	8359	8442
+Brain - Caudate (basal ganglia)	8443	8559
