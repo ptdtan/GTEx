@@ -1,0 +1,5 @@
+#!/bin/bash 
+zcat GTEx_Analysis_v6_RNA-seq_Flux1.6_transcript_rpkm.txt.gz | \
+	awk -v f=$1 -v t=$2 '{for(i=f;i<=t;i++) printf("%s%s",$i,(i==t)?"\n":"\t")}' \
+	> transcript_rpkm_trimmed/$3.txt
+

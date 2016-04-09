@@ -1,14 +1,23 @@
 #!/usr/bin/env python
 import sys
 import samples as sa
-import rpkm
 
-from main import GeneProfile
-
+BUFFER = int(sys.argv[3])
 samples = sa.GetSample(sys.argv[1])
-records = rpkm.RPKMInstance._records_from_file(sys.argv[2])
-RPKMinstance = rpkm.RPKMInstance(records, samples)
+transcript_samples = open(sys.argv[2]).read().strip().split("\t")[BUFFER:]
 
-Genes = {geneid: GeneProfile(id = geneid, rpkms=rpkms) for geneid, rpkms in RPKMinstance._profiles.items() }
-
-print Genes['ENSG00000223972.4'].rpkms['Testis']
+IDdict = sa._IDdict(samples)
+arr_tissues = list(map(lambda x: IDdict[x]._stissue, transcript_samples))
+tmp = arr_tissues[0]
+samples_index = [(tmp, 0+BUFFER+1)]
+for i, s in enumerate(arr_tissues):
+    if s != tmp:
+        samples_index.append((s, i+1+BUFFER))
+        tmp = s
+for i in range(len(samples_index)):
+    try:
+        print "\t".join(list(map(lambda x: str(x), [samples_index[i][0], samples_index[i][1],
+                                                    samples_index[i+1][1]-1])))
+    except IndexError:
+        print "\t".join(list(map(lambda x: str(x),[samples_index[i][0], samples_index[i][1],
+                                                   len(arr_tissues)+BUFFER])))
