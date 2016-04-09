@@ -29,7 +29,7 @@ class RPKMInstance(object):
 
         """
         with gzip.open(filepath, 'rb') as ofile:
-            map(lambda x: ofile.readline(), range(2))
+            map(lambda x: ofile.readline(), range(3))
             #stissues = ofile.readline().strip().split('\t')[2:]
             records = defaultdict(dict)
             map(lambda x: setitem(records, x[0], x[2:]),\

@@ -2,13 +2,16 @@
 import sys
 import samples as sa
 import rpkm
-
-from main import GeneProfile
+import rpkm2tpm as rt
 
 samples = sa.GetSample(sys.argv[1])
-records = rpkm.RPKMInstance._records_from_file(sys.argv[2])
-RPKMinstance = rpkm.RPKMInstance(records, samples)
+transcript_samples = open(sys.argv[2]).read().strip().split("\t")[2:]
 
-Genes = {geneid: GeneProfile(id = geneid, rpkms=rpkms) for geneid, rpkms in RPKMinstance._profiles.items() }
+iddict = sa._IDdict(samples)
+tissuedict = sa._STISSUEdict(samples)
+#print tissuedict.keys(), tissuedict.values()
+tmp = tissuedict[transcript_samples[0]]._stissue
+print tmp, transcript_samples.index(
+for s in transcript_samples:
 
-print Genes['ENSG00000223972.4'].rpkms['Testis']
+    #sleep(0.5)
