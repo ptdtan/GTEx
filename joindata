@@ -1,0 +1,11 @@
+#!/bin/bash
+FILE=$1
+HASH=$2
+NAME="${FILE%%.*}"
+COLS=$( awk "{print NF; exit}" $FILE )
+ROWS=$( printf "${NAME}\t%.0s" $(seq 1 $COLS) )
+#echo $ROWS
+#echo $COLS
+sed -i.bak '1s/^/GeneID\n/' $HASH
+sed -i.bak "1s/^/$ROWS\n/" $FILE
+paste -d "\t" $HASH $FILE > $NAME.db
